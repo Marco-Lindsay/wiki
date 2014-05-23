@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Contributions:</strong>
+  <% @user.questions.each do |question|%>
+  <div>Question title: <%= question.title%></div>
+  <div>Question body: <%= question.body%></div>
+  <div>Question answer: <%= question.answer%></div>
+  <%end%>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
