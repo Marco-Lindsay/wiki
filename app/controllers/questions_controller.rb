@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        @question.users |= [current_user]
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
@@ -43,6 +44,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
+        @question.users |= [current_user]
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
